@@ -27,21 +27,50 @@ public class Exercise4 {
     }
 
     public static TreeNode reConstructBinaryTree(int[] pre, int[] in) {
-        TreeNode root = new TreeNode(pre[0]);
-        TreeNode temp = root;
-        for (int i = 0, j = 0; i < in.length; i++) {
-            for (; j < pre.length; j++) {
-                if (pre[j] != in[i]) {
-                    temp.left = new TreeNode(pre[j]);
-                    temp = root.left;
-                } else {
-                    break;
-                }
-            }
+        if (pre == null || in == null || pre.length == 0 || in.length == 0) {
+            return null;
         }
-        return null;
+        int element = pre[0];
+        TreeNode node = new TreeNode(pre[0]);
+        int targetIndex = getIndex(in, element);
+        if (targetIndex > 0) {
+            int leftCount = targetIndex;
+            int[] leftPre = new int[leftCount];
+            int[] leftIn = new int[leftCount];
+            for (int i = 0; i < leftCount; i++) {
+                leftPre[i] = pre[i + 1];
+                leftIn[i] = in[i];
+            }
+            node.left = reConstructBinaryTree(leftPre, leftIn);
+
+            int rightCount = in.length - leftCount - 1;
+            int[] rightPre = new int[rightCount];
+            int[] rightIn = new int[rightCount];
+            for (int j = targetIndex + 1; j < in.length; j++) {
+                rightPre[j] = pre[j];
+                rightIn[j] = in[j];
+            }
+            node.right = reConstructBinaryTree(rightPre, rightIn);
+        }
+        return node;
     }
 
+    public static int getIndex(int[] arr, int target) {
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] == target) {
+                return i;
+            }
+        }
+        return -1;
+    }
 
+    public static void prePrintTree(TreeNode tree) {
+        if (tree != null) {
+        }
+    }
+
+    public static void midPrintTree(TreeNode tree) {
+
+    }
 
 }
