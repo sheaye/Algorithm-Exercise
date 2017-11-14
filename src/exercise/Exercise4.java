@@ -13,7 +13,12 @@ package exercise;
 public class Exercise4 {
 
     public static void main(String[] args) {
-
+        int[] pre = {1, 2, 4, 7, 3, 5, 6, 8};
+        int[] mid = {4, 7, 2, 1, 5, 3, 8, 6};
+        TreeNode tree = reConstructBinaryTree(pre, mid);
+        prePrintTree(tree);
+        System.out.println();
+        midPrintTree(tree);
     }
 
     public static class TreeNode {
@@ -32,8 +37,9 @@ public class Exercise4 {
         }
         int element = pre[0];
         TreeNode node = new TreeNode(pre[0]);
-        int targetIndex = getIndex(in, element);
-        if (targetIndex > 0) {
+        if (pre.length > 1) {
+            int targetIndex = getIndex(in, element);
+//        if (targetIndex > 0) {
             int leftCount = targetIndex;
             int[] leftPre = new int[leftCount];
             int[] leftIn = new int[leftCount];
@@ -42,15 +48,17 @@ public class Exercise4 {
                 leftIn[i] = in[i];
             }
             node.left = reConstructBinaryTree(leftPre, leftIn);
-
             int rightCount = in.length - leftCount - 1;
-            int[] rightPre = new int[rightCount];
-            int[] rightIn = new int[rightCount];
-            for (int j = targetIndex + 1; j < in.length; j++) {
-                rightPre[j] = pre[j];
-                rightIn[j] = in[j];
+            if (rightCount > 0) {
+                int[] rightPre = new int[rightCount];
+                int[] rightIn = new int[rightCount];
+                for (int j = 0; j < rightCount; j++) {
+                    rightPre[j] = pre[j + targetIndex + 1];
+                    rightIn[j] = in[j + targetIndex + 1];
+                }
+                node.right = reConstructBinaryTree(rightPre, rightIn);
             }
-            node.right = reConstructBinaryTree(rightPre, rightIn);
+//        }
         }
         return node;
     }
@@ -66,11 +74,18 @@ public class Exercise4 {
 
     public static void prePrintTree(TreeNode tree) {
         if (tree != null) {
+            System.out.print(tree.val);
+            prePrintTree(tree.left);
+            prePrintTree(tree.right);
         }
     }
 
     public static void midPrintTree(TreeNode tree) {
-
+        if (tree != null) {
+            midPrintTree(tree.left);
+            System.out.print(tree.val);
+            midPrintTree(tree.right);
+        }
     }
 
 }
