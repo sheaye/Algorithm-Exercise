@@ -31,6 +31,9 @@ public class Exercise4 {
         }
     }
 
+    /**
+     * 思路：使用前序数组中的元素对中序数组进行分割，该元素将数组分为左支和右支，自身为节点值
+     */
     public static TreeNode reConstructBinaryTree(int[] pre, int[] in) {
         if (pre == null || in == null || pre.length == 0 || in.length == 0) {
             return null;
@@ -39,7 +42,6 @@ public class Exercise4 {
         TreeNode node = new TreeNode(pre[0]);
         if (pre.length > 1) {
             int targetIndex = getIndex(in, element);
-//        if (targetIndex > 0) {
             int leftCount = targetIndex;
             int[] leftPre = new int[leftCount];
             int[] leftIn = new int[leftCount];
@@ -58,7 +60,6 @@ public class Exercise4 {
                 }
                 node.right = reConstructBinaryTree(rightPre, rightIn);
             }
-//        }
         }
         return node;
     }
