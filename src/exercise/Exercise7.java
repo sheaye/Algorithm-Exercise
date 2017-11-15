@@ -5,10 +5,45 @@ package exercise;
  */
 public class Exercise7 {
 
-    public int Fibonacci(int n) {
-        if (n == 0 || n == 1) {
+    public static void main(String[] args) {
+        ProgramTimer.timing("Fibonacci", new ProgramTimer.Runner() {
+            @Override
+            public void run() {
+                System.out.println(Fibonacci(5));
+            }
+        });
+
+        ProgramTimer.timing("Fibonacci2", new ProgramTimer.Runner() {
+            @Override
+            public void run() {
+                System.out.println(Fibonacci2(5));
+            }
+        });
+    }
+
+    public static int Fibonacci(int n) {
+        if (n == 0) {
+            return 0;
+        }
+        if (n == 1) {
             return 1;
         }
-        return Fibonacci(n - 1) + Fibonacci(n - 2);
+        int f1 = 0, f2 = 1, f = 0;
+        for (int i = 2; i <= n; i++) {
+            f = f1 + f2;
+            f1 = f2;
+            f2 = f;
+        }
+        return f;
+    }
+
+    public static int Fibonacci2(int n) {
+        if (n == 0) {
+            return 0;
+        }
+        if (n == 1) {
+            return 1;
+        }
+        return Fibonacci2(n - 1) + Fibonacci2(n - 2);
     }
 }
