@@ -6,10 +6,11 @@ package exercise;
 
 public class ProgramTimer {
 
-    private static ProgramTimer sProgramTimer;
-    private Point mCurrentPoint;
+    public interface Runner {
+        void run();
+    }
 
-    private class Point {
+    private static class Point {
         String tag;
         long millis;
 
@@ -19,26 +20,24 @@ public class ProgramTimer {
         }
     }
 
-    private ProgramTimer() {
+    private static Point mCurrentPoint;
 
+    public static void timing(String tag, Runner runner) {
+        System.out.println(tag + " timing start!");
+        long start = System.currentTimeMillis();
+        runner.run();
+        System.out.println(tag + " timing end!");
+        System.out.println(tag + " take about " + (System.currentTimeMillis() - start) + "millions");
     }
 
-    public static ProgramTimer getInstance() {
-        if (sProgramTimer == null) {
-            sProgramTimer = new ProgramTimer();
-        }
-        return sProgramTimer;
-    }
-
-    public void start(String tag) {
+    public static void markStartPoint(String tag) {
         mCurrentPoint = new Point(tag, System.currentTimeMillis());
     }
 
-    public void end(String tag) {
+    public static void markEndPoint(String tag) {
         if (mCurrentPoint != null) {
             System.out.println(mCurrentPoint.tag + " ----> " + tag + ": " + (System.currentTimeMillis() - mCurrentPoint.millis));
             mCurrentPoint = null;
         }
     }
-
 }
