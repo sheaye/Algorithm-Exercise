@@ -10,9 +10,30 @@ package exercise;
 public class Exercise6 {
 
     public static void main(String[] args) {
-        for (int i = 0; i < 100; i++) {
-
+        int[] arr = new int[100000000];
+        int targetIndex = 40000000;
+        int len = arr.length;
+        for (int i = 0; i < len; i++) {
+            if (i < targetIndex) {
+                arr[i] = len - targetIndex + i;
+            } else {
+                arr[i] = i - targetIndex;
+            }
         }
+        System.out.println();
+        ProgramTimer.timing("minNumberInRotateArray1", new ProgramTimer.Runner() {
+            @Override
+            public void run() {
+                minNumberInRotateArray1(arr);
+            }
+        });
+
+        ProgramTimer.timing("minNumberInRotateArray2", new ProgramTimer.Runner() {
+            @Override
+            public void run() {
+                minNumberInRotateArray2(arr);
+            }
+        });
 
     }
 
@@ -23,14 +44,14 @@ public class Exercise6 {
             int mid = (high + low) / 2;
             if (array[mid] > array[high]) {
                 low = mid + 1;
-            }else{
+            } else {
                 high = mid;
             }
         }
         return array[high];
     }
 
-    public static int minNumberInRotateArray2(int [] array) {
+    public static int minNumberInRotateArray2(int[] array) {
         if (array.length == 1) {
             return array[0];
         }

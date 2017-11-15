@@ -23,11 +23,10 @@ public class ProgramTimer {
     private static Point mCurrentPoint;
 
     public static void timing(String tag, Runner runner) {
-        System.out.println(tag + " timing start!");
         long start = System.currentTimeMillis();
         runner.run();
-        System.out.println(tag + " timing end!");
-        System.out.println(tag + " take about " + (System.currentTimeMillis() - start) + "millions");
+        long end = System.currentTimeMillis();
+        System.out.println(tag + " take about " + (end - start) + " millions");
     }
 
     public static void markStartPoint(String tag) {
