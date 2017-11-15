@@ -10,11 +10,13 @@ package exercise;
 public class Exercise6 {
 
     public static void main(String[] args) {
-        int[] array = {3, 4, 5, 1, 2};
-        System.out.print(minNumberInRotateArray(array));
+        for (int i = 0; i < 100; i++) {
+
+        }
+
     }
 
-    public static int minNumberInRotateArray(int[] array) {
+    public static int minNumberInRotateArray1(int[] array) {
         int low = 0;
         int high = array.length - 1;
         while (high > low) {
@@ -23,6 +25,18 @@ public class Exercise6 {
                 low = mid + 1;
             }else{
                 high = mid;
+            }
+        }
+        return array[high];
+    }
+
+    public static int minNumberInRotateArray2(int [] array) {
+        if (array.length == 1) {
+            return array[0];
+        }
+        for (int i = 0; i < array.length; i++) {
+            if (array[i] - array[i + 1] > 0) {
+                return array[i + 1];
             }
         }
         return 0;
