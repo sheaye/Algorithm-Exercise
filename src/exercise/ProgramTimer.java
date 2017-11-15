@@ -20,7 +20,7 @@ public class ProgramTimer {
         }
     }
 
-    private static Point mCurrentPoint;
+    private static Point sCurrentPoint;
 
     public static void timing(String tag, Runner runner) {
         long start = System.currentTimeMillis();
@@ -30,13 +30,13 @@ public class ProgramTimer {
     }
 
     public static void markStartPoint(String tag) {
-        mCurrentPoint = new Point(tag, System.currentTimeMillis());
+        sCurrentPoint = new Point(tag, System.currentTimeMillis());
     }
 
     public static void markEndPoint(String tag) {
-        if (mCurrentPoint != null) {
-            System.out.println(mCurrentPoint.tag + " ----> " + tag + ": " + (System.currentTimeMillis() - mCurrentPoint.millis));
-            mCurrentPoint = null;
+        if (sCurrentPoint != null) {
+            System.out.println(sCurrentPoint.tag + " ----> " + tag + ": " + (System.currentTimeMillis() - sCurrentPoint.millis));
+            sCurrentPoint = null;
         }
     }
 }
