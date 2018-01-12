@@ -1,4 +1,4 @@
-package exercise;
+package jianzhioffer;
 
 public class ListNode {
     int val;
