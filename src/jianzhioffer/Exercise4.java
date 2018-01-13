@@ -21,16 +21,6 @@ public class Exercise4 {
         midPrintTree(tree);
     }
 
-    public static class TreeNode {
-        int val;
-        TreeNode left;
-        TreeNode right;
-
-        TreeNode(int x) {
-            val = x;
-        }
-    }
-
     /**
      * 思路：使用前序数组中的元素对中序数组进行分割，该元素将数组分为左支和右支，自身为节点值
      */
