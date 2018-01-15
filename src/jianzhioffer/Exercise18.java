@@ -18,20 +18,8 @@ package jianzhioffer;
  */
 public class Exercise18 {
 
-    public static TreeNode createTreeNode() {
-        TreeNode tree = new TreeNode(8);
-        tree.left = new TreeNode(6);
-        tree.left.left = new TreeNode(5);
-        tree.left.right = new TreeNode(7);
-
-        tree.right = new TreeNode(10);
-        tree.right.left = new TreeNode(9);
-        tree.right.right = new TreeNode(11);
-        return tree;
-    }
-
     public static void main(String[] args) {
-        TreeNode tree = createTreeNode();
+        TreeNode tree = TreeNode.createTreeNode();
         System.out.println(tree.toString());
         Mirror(tree);
         System.out.println(tree.toString());
