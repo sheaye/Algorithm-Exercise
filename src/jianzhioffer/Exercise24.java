@@ -11,6 +11,11 @@ public class Exercise24 {
     private ArrayList<ArrayList<Integer>> mResult = new ArrayList<>();
     private ArrayList<Integer> list = new ArrayList<>();
 
+    public static void main(String[] args) {
+        Exercise24 exe = new Exercise24();
+
+    }
+
     public ArrayList<ArrayList<Integer>> FindPath(TreeNode root, int target) {
         if (root == null || root.val > target) {
             return mResult;
@@ -20,12 +25,8 @@ public class Exercise24 {
         if (target == 0 && root.left == null && root.right == null) {
             mResult.add(new ArrayList<>(list));
         } else {
-            if (root.left != null) {
-                FindPath(root.left, target);
-            }
-            if (root.right != null) {
-                FindPath(root.right, target);
-            }
+            FindPath(root.left, target);
+            FindPath(root.right, target);
         }
         list.remove(list.size() - 1);
         return mResult;
