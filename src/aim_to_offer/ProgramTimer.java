@@ -10,8 +10,18 @@ public class ProgramTimer {
         void run();
     }
 
+    public static void timing(String tag, int loopTimes, Runner runner) {
+        long start = System.currentTimeMillis();
+        for (int i = 0; i < loopTimes; i++) {
+            runner.run();
+        }
+        long end = System.currentTimeMillis();
+        System.out.println(tag + " take about " + (end - start) + " millions");
+    }
+
     private static class Point {
         String tag;
+
         long millis;
 
         Point(String tag, long millis) {
@@ -20,23 +30,16 @@ public class ProgramTimer {
         }
     }
 
-    private static Point sCurrentPoint;
+    private Point mCurrentPoint;
 
-    public static void timing(String tag, Runner runner) {
-        long start = System.currentTimeMillis();
-        runner.run();
-        long end = System.currentTimeMillis();
-        System.out.println(tag + " take about " + (end - start) + " millions");
+    public ProgramTimer(String tag) {
+        mCurrentPoint = new Point(tag, System.currentTimeMillis());
     }
 
-    public static void markStartPoint(String tag) {
-        sCurrentPoint = new Point(tag, System.currentTimeMillis());
-    }
-
-    public static void markEndPoint(String tag) {
-        if (sCurrentPoint != null) {
-            System.out.println(sCurrentPoint.tag + " ----> " + tag + ": " + (System.currentTimeMillis() - sCurrentPoint.millis));
-            sCurrentPoint = null;
+    public void markPoint(String tag) {
+        if (mCurrentPoint != null) {
+            System.out.println(mCurrentPoint.tag + " ----> " + tag + ": " + (System.currentTimeMillis() - mCurrentPoint.millis));
+            mCurrentPoint = null;
         }
     }
 }

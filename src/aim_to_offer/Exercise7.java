@@ -6,14 +6,14 @@ package aim_to_offer;
 public class Exercise7 {
 
     public static void main(String[] args) {
-        ProgramTimer.timing("Fibonacci", new ProgramTimer.Runner() {
+        ProgramTimer.timing("Fibonacci",1, new ProgramTimer.Runner() {
             @Override
             public void run() {
                 System.out.println(Fibonacci(5));
             }
         });
 
-        ProgramTimer.timing("Fibonacci2", new ProgramTimer.Runner() {
+        ProgramTimer.timing("Fibonacci2",1, new ProgramTimer.Runner() {
             @Override
             public void run() {
                 System.out.println(Fibonacci2(5));

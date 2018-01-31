@@ -21,14 +21,14 @@ public class Exercise6 {
             }
         }
         System.out.println();
-        ProgramTimer.timing("minNumberInRotateArray1", new ProgramTimer.Runner() {
+        ProgramTimer.timing("minNumberInRotateArray1", 1, new ProgramTimer.Runner() {
             @Override
             public void run() {
                 minNumberInRotateArray1(arr);
             }
         });
 
-        ProgramTimer.timing("minNumberInRotateArray2", new ProgramTimer.Runner() {
+        ProgramTimer.timing("minNumberInRotateArray2", 1, new ProgramTimer.Runner() {
             @Override
             public void run() {
                 minNumberInRotateArray2(arr);
