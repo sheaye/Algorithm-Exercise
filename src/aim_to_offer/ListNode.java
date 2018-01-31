@@ -8,6 +8,23 @@ public class ListNode {
         this.val = val;
     }
 
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null || !(obj instanceof ListNode)) {
+            return false;
+        }
+        ListNode node2 = (ListNode) obj;
+        if (node2.val != this.val) {
+            return false;
+        }
+        if (this.next == null) {
+            return node2.next == null;
+        } else {
+            return next.equals(node2.next);
+        }
+
+    }
+
     public String toString() {
         ListNode listNode = this;
         StringBuilder builder = new StringBuilder("{ ");
