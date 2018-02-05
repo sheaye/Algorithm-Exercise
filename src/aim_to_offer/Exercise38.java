@@ -10,7 +10,7 @@ public class Exercise38 {
 
     public static void main(String[] args) {
         Exercise38 exe = new Exercise38();
-        int times = Integer.MAX_VALUE/10;
+        int times = Integer.MAX_VALUE;
         //95846 millions
         ProgramTimer.timing("递归：", times, () -> exe.TreeDepth(TreeNode.createTreeNode()));
         //240362 millions
