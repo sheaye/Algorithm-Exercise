@@ -12,19 +12,19 @@ public class Exercise37 {
         System.out.println(exe.GetNumberOfK(array, 2));
         System.out.println(exe.GetNumberOfK2(array, 2));
 
-        int times = Integer.MAX_VALUE;
+        int times = Integer.MAX_VALUE/5;
         // 采用计数累加：
         ProgramTimer.timing("GetNumberOfK1", times, () -> {
             exe.GetNumberOfK1(array, 2);
         });
 
         // 采用lastIndex-firstIndex+1，firstIndexOfK()方法和lastIndexOfK()方法都用while循环：
-        ProgramTimer.timing("GetNumberOfK", times, () -> {
+        ProgramTimer.timing("GetNumberOfK while:", times, () -> {
             exe.GetNumberOfK(array, 2);
         });
 
         // 采用lastIndex-firstIndex+1，firstIndexOfK()方法和lastIndexOfK()方法都用递归：
-        ProgramTimer.timing("GetNumberOfK2", times, () -> {
+        ProgramTimer.timing("GetNumberOfK2 递归：", times, () -> {
             exe.GetNumberOfK2(array, 2);
         });
 
