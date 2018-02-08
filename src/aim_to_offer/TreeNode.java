@@ -1,5 +1,8 @@
 package aim_to_offer;
 
+import java.util.LinkedList;
+import java.util.Queue;
+
 public class TreeNode {
 
     int val = 0;
@@ -11,10 +14,10 @@ public class TreeNode {
     }
 
     /**
-     *      8
-     *    /  \
-     *   6   10
-     *  / \  / \
+     * 8
+     * /  \
+     * 6   10
+     * / \  / \
      * 5  7 9 11
      */
     public static TreeNode createTreeNode() {
@@ -40,5 +43,47 @@ public class TreeNode {
             builder.append(right.toString());
         }
         return builder.toString();
+    }
+
+    public static TreeNode createTreeNode(String str) {
+        if (str == null || str.length() < 1) {
+            return null;
+        }
+        String[] strs = str.split(",");
+        TreeNode tree = new TreeNode(Integer.parseInt(strs[0]));
+        Queue<TreeNode> queue = new LinkedList<>();
+        queue.add(tree);
+        int i = 1;
+        while (!queue.isEmpty()) {
+            if (i == strs.length) {
+                break;
+            }
+            TreeNode node = queue.poll();
+            String leftStr = strs[i++];
+            if (!leftStr.equals("#")) {
+                node.left = new TreeNode(Integer.parseInt(leftStr));
+                queue.offer(node.left);
+            } else {
+                node.left = null;
+            }
+            if (i == strs.length) {
+                break;
+            }
+            String rightStr = strs[i++];
+            if (!rightStr.equals("#")) {
+                node.right = new TreeNode(Integer.parseInt(rightStr));
+                queue.offer(node.right);
+            } else {
+                node.right = null;
+            }
+
+        }
+        return tree;
+    }
+
+    public static void main(String[] args) {
+        TreeNode tree = TreeNode.createTreeNode("8,6,10,5,#,9,11");
+//        TreeNode tree = TreeNode.createTreeNode();
+        System.out.println(tree.toString());
     }
 }
