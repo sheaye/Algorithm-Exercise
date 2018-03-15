@@ -14,7 +14,7 @@ public class Exercise63 {
         int[] arr = {1, 7, 8, 2, 4, 3, 5, 6};
         /*ProgramTimer.timing("1", 10000, new ProgramTimer.Runner() {
             @Override
-            public void run() {
+            public void run2() {
                 for (int i = 0; i < arr.length; i++) {
                     exe.Insert(arr[i]);
                 }
@@ -24,7 +24,7 @@ public class Exercise63 {
 
         ProgramTimer.timing("2", 10000, new ProgramTimer.Runner() {
             @Override
-            public void run() {
+            public void run2() {
                 for (int i = 0; i < arr.length; i++) {
                     exe.Insert2(arr[i]);
                 }
