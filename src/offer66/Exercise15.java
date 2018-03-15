@@ -1,6 +1,8 @@
 package offer66;
 
 
+import common.ListNode;
+
 public class Exercise15 {
 
     public ListNode reverseList(ListNode head) {

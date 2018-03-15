@@ -1,5 +1,7 @@
 package offer66;
 
+import common.RandomListNode;
+
 import java.util.HashMap;
 
 /**

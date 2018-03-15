@@ -1,5 +1,7 @@
 package offer66;
 
+import common.TreeNode;
+
 /**
  * 输入一棵二叉树，判断该二叉树是否是平衡二叉树。
  * 测试用例：{1,2,3,4,5,#,6,#,#,7}

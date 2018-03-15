@@ -1,4 +1,4 @@
-package offer66;
+package common;
 
 public class IntegerUtil {
 

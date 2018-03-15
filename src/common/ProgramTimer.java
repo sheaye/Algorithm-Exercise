@@ -1,4 +1,4 @@
-package offer66;
+package common;
 
 /**
  * Created by Yun on 2017/10/31.

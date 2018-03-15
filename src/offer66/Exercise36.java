@@ -1,5 +1,7 @@
 package offer66;
 
+import common.ListNode;
+
 public class Exercise36 {
 
     public static void main(String[] args) {
