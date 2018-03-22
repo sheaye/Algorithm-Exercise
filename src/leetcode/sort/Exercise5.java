@@ -3,7 +3,7 @@ package leetcode.sort;
 import common.ListNode;
 
 /**
- * Sort a linked list using insertion sort.
+ * Sort a list list using insertion sort.
  */
 public class Exercise5 {
 
