@@ -1,5 +1,8 @@
 package common;
 
+import java.util.HashSet;
+import java.util.Set;
+
 public class ListNode {
     public int val;
     public ListNode next = null;
@@ -28,8 +31,15 @@ public class ListNode {
     public String toString() {
         ListNode listNode = this;
         StringBuilder builder = new StringBuilder("{ ");
+        Set<ListNode> set = new HashSet<>();
         while (listNode != null) {
             builder.append(listNode.val + ", ");
+            if (set.contains(listNode)) {
+                builder.append("..., ");
+                break;
+            } else {
+                set.add(listNode);
+            }
             listNode = listNode.next;
         }
         builder.delete(builder.lastIndexOf(", "), builder.length());
