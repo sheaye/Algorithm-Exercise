@@ -1,5 +1,8 @@
 package leetcode.dynamic;
 
+
+import common.ProgramTimer;
+
 import java.util.*;
 
 /**
@@ -14,44 +17,86 @@ public class Exercise11 {
 
     public static void main(String[] args) {
         Exercise11 exe = new Exercise11();
-        String str = "catsanddog";
+//        String str = "catsanddog";
+//        String str = "a";
+        String str = "ab";
         Set<String> set = new HashSet<>();
-        set.add("cat");
-        set.add("cats");
-        set.add("and");
-        set.add("sand");
-        set.add("dog");
+//        set.add("cat");
+//        set.add("cats");
+//        set.add("and");
+//        set.add("sand");
+//        set.add("dog");
+        set.add("a");
+        set.add("b");
+        /*ProgramTimer.timing("workBreak", 5000000, new ProgramTimer.Runner() {
+            @Override
+            public void run() {
+                exe.wordBreak(str, set);
+            }
+        });
+        ProgramTimer.timing("workBreak2", 5000000, new ProgramTimer.Runner() {
+            @Override
+            public void run() {
+                exe.wordBreak2(str, set);
+            }
+        });*/
         System.out.println(exe.wordBreak(str, set).toString());
     }
 
-    private ArrayList<String> mList;
-    public ArrayList<String> wordBreak(String s, Set<String> dict) {
-        mList = new ArrayList<>();
-        for (String d : dict) {
-            if (s.startsWith(d)) {
-                Deque<String> temp = new LinkedList<>();
-                temp.addFirst(d);
-                wordBreak(s.substring(d.length()), dict, temp);
-            }
-        }
-        return mList;
+    private ArrayList<String> mResult;
+    private ArrayList<String> mTemp;
+
+    public ArrayList<String> wordBreak2(String s, Set<String> dict) {
+        mResult = new ArrayList<>();
+        mTemp = new ArrayList<>();
+        doBreak2(s, dict);
+        return mResult;
     }
 
-    private void wordBreak(String source, Set<String> dict, Deque<String> temp) {
-        if (source == null || source.length() < 1) {
+    private void doBreak2(String s, Set<String> dict) {
+        int len = s.length();
+        if (len < 1) {
             StringBuilder builder = new StringBuilder();
-            while (!temp.isEmpty()){
-                builder.append(temp.removeFirst()).append(" ");
+            for (int i = mTemp.size() - 1; i >= 0; i--) {
+                builder.append(mTemp.get(i)).append(" ");
             }
             builder.deleteCharAt(builder.length() - 1);
-            mList.add(builder.toString());
-            return;
+            mResult.add(builder.toString());
         }
-        for (String dic : dict) {
-            if (source.startsWith(dic)) {
-                temp.addLast(dic);
-                wordBreak(source.substring(dic.length()), dict, temp);
-                temp.pollLast();
+
+        for (int i = len - 1; i >= 0; i--) {
+            String sub = s.substring(i, len);
+            if (dict.contains(sub)) {
+                mTemp.add(sub);
+                doBreak2(s.substring(0, i), dict);
+                mTemp.remove(mTemp.size() - 1);
+            }
+        }
+    }
+
+    public ArrayList<String> wordBreak(String s, Set<String> dict) {
+        mResult = new ArrayList<>();
+        mTemp = new ArrayList<>();
+        doBreak(s, dict);
+        return mResult;
+    }
+
+    private void doBreak(String s, Set<String> dict) {
+        if (s.length() < 1) {
+            StringBuilder builder = new StringBuilder();
+            for (String str : mTemp) {
+                builder.append(str).append(" ");
+            }
+            builder.deleteCharAt(builder.length() - 1);
+            mResult.add(builder.toString());
+        }
+        int len = s.length();
+        for (int i = 0; i < len; i++) {
+            String sub = s.substring(0, i + 1);
+            if (dict.contains(sub)) {
+                mTemp.add(sub);
+                doBreak(s.substring(i + 1, len), dict);
+                mTemp.remove(mTemp.size() - 1);
             }
         }
     }
