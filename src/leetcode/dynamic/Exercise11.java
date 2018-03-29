@@ -1,8 +1,6 @@
 package leetcode.dynamic;
 
 
-import common.ProgramTimer;
-
 import java.util.*;
 
 /**
@@ -31,29 +29,29 @@ public class Exercise11 {
         /*ProgramTimer.timing("workBreak", 5000000, new ProgramTimer.Runner() {
             @Override
             public void run() {
-                exe.wordBreak(str, set);
+                exe.wordBreak1(str, set);
             }
         });
         ProgramTimer.timing("workBreak2", 5000000, new ProgramTimer.Runner() {
             @Override
             public void run() {
-                exe.wordBreak2(str, set);
+                exe.wordBreak(str, set);
             }
         });*/
-        System.out.println(exe.wordBreak(str, set).toString());
+        System.out.println(exe.wordBreak1(str, set).toString());
     }
 
     private ArrayList<String> mResult;
     private ArrayList<String> mTemp;
 
-    public ArrayList<String> wordBreak2(String s, Set<String> dict) {
+    public ArrayList<String> wordBreak(String s, Set<String> dict) {
         mResult = new ArrayList<>();
         mTemp = new ArrayList<>();
-        doBreak2(s, dict);
+        doBreak(s, dict);
         return mResult;
     }
 
-    private void doBreak2(String s, Set<String> dict) {
+    private void doBreak(String s, Set<String> dict) {
         int len = s.length();
         if (len < 1) {
             StringBuilder builder = new StringBuilder();
@@ -68,20 +66,20 @@ public class Exercise11 {
             String sub = s.substring(i, len);
             if (dict.contains(sub)) {
                 mTemp.add(sub);
-                doBreak2(s.substring(0, i), dict);
+                doBreak(s.substring(0, i), dict);
                 mTemp.remove(mTemp.size() - 1);
             }
         }
     }
 
-    public ArrayList<String> wordBreak(String s, Set<String> dict) {
+    public ArrayList<String> wordBreak1(String s, Set<String> dict) {
         mResult = new ArrayList<>();
         mTemp = new ArrayList<>();
-        doBreak(s, dict);
+        doBreak1(s, dict);
         return mResult;
     }
 
-    private void doBreak(String s, Set<String> dict) {
+    private void doBreak1(String s, Set<String> dict) {
         if (s.length() < 1) {
             StringBuilder builder = new StringBuilder();
             for (String str : mTemp) {
@@ -95,7 +93,7 @@ public class Exercise11 {
             String sub = s.substring(0, i + 1);
             if (dict.contains(sub)) {
                 mTemp.add(sub);
-                doBreak(s.substring(i + 1, len), dict);
+                doBreak1(s.substring(i + 1, len), dict);
                 mTemp.remove(mTemp.size() - 1);
             }
         }

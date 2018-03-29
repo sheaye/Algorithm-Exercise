@@ -79,13 +79,13 @@ public class Exercise59 {
 
     private ArrayList<ArrayList<Integer>> Print(TreeNode pRoot) {
         ArrayList<Integer> test = new ArrayList<>();
-        ArrayList<ArrayList<Integer>> list = new ArrayList<>();
+        ArrayList<ArrayList<Integer>> linkedlist = new ArrayList<>();
         if (pRoot == null) {
-            return list;
+            return linkedlist;
         }
         ArrayList<Integer> item0 = new ArrayList<>();
         item0.add(pRoot.val);
-        list.add(item0);
+        linkedlist.add(item0);
         test.add(pRoot.val);
         Stack<TreeNode> stack1 = new Stack<>();
         stack1.push(pRoot);
@@ -122,9 +122,9 @@ public class Exercise59 {
     /*private int count;
     private ArrayList<Integer> test = new ArrayList<>();
     public ArrayList<ArrayList<Integer>> Print(TreeNode pRoot) {
-        ArrayList<ArrayList<Integer>> list = new ArrayList<>();
+        ArrayList<ArrayList<Integer>> linkedlist = new ArrayList<>();
         if (pRoot == null) {
-            return list;
+            return linkedlist;
         }
         Queue<TreeNode> queue = new LinkedList<>();
         queue.add(pRoot);

@@ -1,9 +1,9 @@
-package leetcode.list;
+package leetcode.linkedlist;
 
 import common.ListNode;
 
 /**
- * Given a linked list, return the node where the cycle begins. If there is no cycle, return null.
+ * Given a linked linkedlist, return the node where the cycle begins. If there is no cycle, return null.
  * Follow up:
  * Can you solve it without using extra space?
  */

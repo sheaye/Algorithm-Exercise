@@ -66,7 +66,7 @@ public class Exercise6 {
                 stack.push(node.right);
             }
             list.push(node.val);
-//            list.add(0, node.val);
+//            linkedlist.add(0, node.val);
         }
         return list;
     }

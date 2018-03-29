@@ -3,7 +3,7 @@ package leetcode.sort;
 import common.ListNode;
 
 /**
- * Sort a list list in O(n log n) time using constant space complexity.
+ * Sort a linkedlist linkedlist in O(n log n) time using constant space complexity.
  */
 public class Exercise4 {
 
