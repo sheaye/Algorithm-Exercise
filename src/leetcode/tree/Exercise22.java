@@ -18,7 +18,7 @@ public class Exercise22 {
 
     public static void main(String[] args) {
         Exercise22 exe = new Exercise22();
-        System.out.println(exe.sumNumbers(TreeNode.createTreeNode("1,2,3,4,5,6,7")));
+        System.out.println(exe.sumNumbers(TreeNode.createTreeNode("9")));
     }
 
     public int sumNumbers(TreeNode root) {
@@ -32,7 +32,6 @@ public class Exercise22 {
         }
         sum = sum * 10 + root.val;
         if (root.left == null && root.right == null) {
-            System.out.println(sum);
             return sum;
         }
         return preOrder(root.left, sum) + preOrder(root.right, sum);
