@@ -19,12 +19,12 @@ public class SelectionSort {
                 }
             }
             if (minIndex != i) {
-                exchange(arr, i, minIndex);
+                swap(arr, i, minIndex);
             }
         }
     }
 
-    private static void exchange(int[] arr, int i, int j) {
+    private static void swap(int[] arr, int i, int j) {
         int temp = arr[i];
         arr[i] = arr[j];
         arr[j] = temp;
