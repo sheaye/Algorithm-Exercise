@@ -35,15 +35,16 @@ public class TreeNode {
     @Override
     public String toString() {
         StringBuilder builder = new StringBuilder();
-        builder.append(val).append(", ");
         if (left != null) {
             builder.append(left.toString());
         }
+        builder.append(val).append(", ");
         if (right != null) {
             builder.append(right.toString());
         }
         return builder.toString();
     }
+
 
     public static TreeNode createTreeNode(String str) {
         if (str == null || str.length() < 1) {
