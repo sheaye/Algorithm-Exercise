@@ -1,7 +1,5 @@
 package leetcode.array;
 
-import java.util.Arrays;
-
 /**
  * Given two sorted integer arrays A and B, merge B into A as one sorted array.
  * Note:
