@@ -23,7 +23,7 @@ public class Exercise64 {
         int[] h = new int[n];
         for (int i = 0; i < m; i++) {
             Stack<Integer> stack = new Stack<>();
-            stack.push(-1);
+            stack.push( -1);
             for (int j = 0; j < n; j++) {
                 if (matrix[i][j] == '1') {
                     h[j] += 1;
