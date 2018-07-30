@@ -27,11 +27,11 @@ public class Exercise72 {
             return null;
         }
         ArrayList<ArrayList<Integer>> result = new ArrayList<>();
-        combine(n, 1, k, k, new ArrayList<>(), result);
+        combine(n, 1, k, new ArrayList<>(), result);
         return result;
     }
 
-    private void combine(int n, int n0, int k, int k0, ArrayList<Integer> item, ArrayList<ArrayList<Integer>> result) {
+    private void combine(int n, int n0, int k0, ArrayList<Integer> item, ArrayList<ArrayList<Integer>> result) {
         if (k0 == 0) {
             result.add(item);
             return;
@@ -42,7 +42,7 @@ public class Exercise72 {
         for (int i = n0; i < n - k0 + 2; i++) {
             ArrayList<Integer> item0 = new ArrayList<>(item);
             item0.add(i);
-            combine(n, i + 1, k, k0 - 1, item0, result);
+            combine(n, i + 1, k0 - 1, item0, result);
         }
     }
 
